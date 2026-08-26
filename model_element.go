@@ -23,6 +23,8 @@ var _ MappedNullable = &Element{}
 type Element struct {
 	// Alignment when wrapping
 	Align *string `json:"align,omitempty"`
+	// Grid columns (default 1)
+	Columns *int64 `json:"columns,omitempty"`
 	// Box corner rounding 0-8
 	CornerRadius *int64 `json:"cornerRadius,omitempty"`
 	// Barcode payload; {{name}} interpolates
@@ -58,6 +60,8 @@ type Element struct {
 	// Print the human-readable line under 1D barcodes (default true)
 	PrintText *bool `json:"printText,omitempty"`
 	Rotation *int64 `json:"rotation,omitempty"`
+	// Grid rows (default 1)
+	Rows *int64 `json:"rows,omitempty"`
 	// Text content; {{name}} interpolates from variables
 	Text *string `json:"text,omitempty"`
 	// Stroke thickness in dots (default 1)
@@ -126,6 +130,38 @@ func (o *Element) HasAlign() bool {
 // SetAlign gets a reference to the given string and assigns it to the Align field.
 func (o *Element) SetAlign(v string) {
 	o.Align = &v
+}
+
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *Element) GetColumns() int64 {
+	if o == nil || IsNil(o.Columns) {
+		var ret int64
+		return ret
+	}
+	return *o.Columns
+}
+
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Element) GetColumnsOk() (*int64, bool) {
+	if o == nil || IsNil(o.Columns) {
+		return nil, false
+	}
+	return o.Columns, true
+}
+
+// HasColumns returns a boolean if a field has been set.
+func (o *Element) HasColumns() bool {
+	if o != nil && !IsNil(o.Columns) {
+		return true
+	}
+
+	return false
+}
+
+// SetColumns gets a reference to the given int64 and assigns it to the Columns field.
+func (o *Element) SetColumns(v int64) {
+	o.Columns = &v
 }
 
 // GetCornerRadius returns the CornerRadius field value if set, zero value otherwise.
@@ -704,6 +740,38 @@ func (o *Element) SetRotation(v int64) {
 	o.Rotation = &v
 }
 
+// GetRows returns the Rows field value if set, zero value otherwise.
+func (o *Element) GetRows() int64 {
+	if o == nil || IsNil(o.Rows) {
+		var ret int64
+		return ret
+	}
+	return *o.Rows
+}
+
+// GetRowsOk returns a tuple with the Rows field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Element) GetRowsOk() (*int64, bool) {
+	if o == nil || IsNil(o.Rows) {
+		return nil, false
+	}
+	return o.Rows, true
+}
+
+// HasRows returns a boolean if a field has been set.
+func (o *Element) HasRows() bool {
+	if o != nil && !IsNil(o.Rows) {
+		return true
+	}
+
+	return false
+}
+
+// SetRows gets a reference to the given int64 and assigns it to the Rows field.
+func (o *Element) SetRows(v int64) {
+	o.Rows = &v
+}
+
 // GetText returns the Text field value if set, zero value otherwise.
 func (o *Element) GetText() string {
 	if o == nil || IsNil(o.Text) {
@@ -965,6 +1033,9 @@ func (o Element) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Align) {
 		toSerialize["align"] = o.Align
 	}
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
+	}
 	if !IsNil(o.CornerRadius) {
 		toSerialize["cornerRadius"] = o.CornerRadius
 	}
@@ -1018,6 +1089,9 @@ func (o Element) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Rotation) {
 		toSerialize["rotation"] = o.Rotation
+	}
+	if !IsNil(o.Rows) {
+		toSerialize["rows"] = o.Rows
 	}
 	if !IsNil(o.Text) {
 		toSerialize["text"] = o.Text

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Align** | Pointer to **string** | Alignment when wrapping | [optional] 
+**Columns** | Pointer to **int64** | Grid columns (default 1) | [optional] 
 **CornerRadius** | Pointer to **int64** | Box corner rounding 0-8 | [optional] 
 **Data** | Pointer to **string** | Barcode payload; {{name}} interpolates | [optional] 
 **Diameter** | Pointer to **int64** | Circle diameter in dots | [optional] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **Png** | Pointer to **string** | PNG/GIF/JPEG, base64-encoded | [optional] 
 **PrintText** | Pointer to **bool** | Print the human-readable line under 1D barcodes (default true) | [optional] 
 **Rotation** | Pointer to **int64** |  | [optional] 
+**Rows** | Pointer to **int64** | Grid rows (default 1) | [optional] 
 **Text** | Pointer to **string** | Text content; {{name}} interpolates from variables | [optional] 
 **Thickness** | Pointer to **int64** | Stroke thickness in dots (default 1) | [optional] 
 **Threshold** | Pointer to **int64** | Bitonal threshold (default 128) | [optional] 
@@ -75,6 +77,31 @@ SetAlign sets Align field to given value.
 `func (o *Element) HasAlign() bool`
 
 HasAlign returns a boolean if a field has been set.
+
+### GetColumns
+
+`func (o *Element) GetColumns() int64`
+
+GetColumns returns the Columns field if non-nil, zero value otherwise.
+
+### GetColumnsOk
+
+`func (o *Element) GetColumnsOk() (*int64, bool)`
+
+GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetColumns
+
+`func (o *Element) SetColumns(v int64)`
+
+SetColumns sets Columns field to given value.
+
+### HasColumns
+
+`func (o *Element) HasColumns() bool`
+
+HasColumns returns a boolean if a field has been set.
 
 ### GetCornerRadius
 
@@ -525,6 +552,31 @@ SetRotation sets Rotation field to given value.
 `func (o *Element) HasRotation() bool`
 
 HasRotation returns a boolean if a field has been set.
+
+### GetRows
+
+`func (o *Element) GetRows() int64`
+
+GetRows returns the Rows field if non-nil, zero value otherwise.
+
+### GetRowsOk
+
+`func (o *Element) GetRowsOk() (*int64, bool)`
+
+GetRowsOk returns a tuple with the Rows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRows
+
+`func (o *Element) SetRows(v int64)`
+
+SetRows sets Rows field to given value.
+
+### HasRows
+
+`func (o *Element) HasRows() bool`
+
+HasRows returns a boolean if a field has been set.
 
 ### GetText
 
