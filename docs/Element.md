@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Align** | Pointer to **string** | Alignment when wrapping | [optional] 
+**Anchor** | Pointer to **string** | Which corner x,y names. topLeft (^FO, default); bottomLeft (^FT: the text baseline, what most designer-exported ZPL uses); the Right variants make x the field&#39;s right edge (ZPL justification 1) | [optional] 
 **Columns** | Pointer to **int64** | Grid columns (default 1) | [optional] 
 **CornerRadius** | Pointer to **int64** | Box corner rounding 0-8 | [optional] 
 **Data** | Pointer to **string** | Barcode payload; {{name}} interpolates | [optional] 
@@ -15,9 +16,11 @@ Name | Type | Description | Notes
 **FontWidth** | Pointer to **int64** | Character width in dots; 0 follows fontHeight | [optional] 
 **Height** | Pointer to **int64** | Bar height in dots (1D) / box height in dots (box) | [optional] 
 **Length** | Pointer to **int64** | Line length in dots | [optional] 
+**LineSpacing** | Pointer to **int64** | Extra dots between wrapped lines | [optional] 
 **Lines** | Pointer to **int64** | Max lines when wrapping (default 1) | [optional] 
 **Magnification** | Pointer to **int64** | QR module magnification (default 3) | [optional] 
 **MaxWidth** | Pointer to **int64** | Wrap text into a block this many dots wide | [optional] 
+**Mode** | Pointer to **string** | Code 128 mode: N none (default), U UCC case, A automatic subset switching, D UCC/EAN application identifiers | [optional] 
 **ModuleSize** | Pointer to **int64** | DataMatrix module size in dots (default 4) | [optional] 
 **ModuleWidth** | Pointer to **int64** | Narrow element width in dots (1D; default 3) | [optional] 
 **Orientation** | Pointer to **string** | Line direction | [optional] 
@@ -77,6 +80,31 @@ SetAlign sets Align field to given value.
 `func (o *Element) HasAlign() bool`
 
 HasAlign returns a boolean if a field has been set.
+
+### GetAnchor
+
+`func (o *Element) GetAnchor() string`
+
+GetAnchor returns the Anchor field if non-nil, zero value otherwise.
+
+### GetAnchorOk
+
+`func (o *Element) GetAnchorOk() (*string, bool)`
+
+GetAnchorOk returns a tuple with the Anchor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnchor
+
+`func (o *Element) SetAnchor(v string)`
+
+SetAnchor sets Anchor field to given value.
+
+### HasAnchor
+
+`func (o *Element) HasAnchor() bool`
+
+HasAnchor returns a boolean if a field has been set.
 
 ### GetColumns
 
@@ -328,6 +356,31 @@ SetLength sets Length field to given value.
 
 HasLength returns a boolean if a field has been set.
 
+### GetLineSpacing
+
+`func (o *Element) GetLineSpacing() int64`
+
+GetLineSpacing returns the LineSpacing field if non-nil, zero value otherwise.
+
+### GetLineSpacingOk
+
+`func (o *Element) GetLineSpacingOk() (*int64, bool)`
+
+GetLineSpacingOk returns a tuple with the LineSpacing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLineSpacing
+
+`func (o *Element) SetLineSpacing(v int64)`
+
+SetLineSpacing sets LineSpacing field to given value.
+
+### HasLineSpacing
+
+`func (o *Element) HasLineSpacing() bool`
+
+HasLineSpacing returns a boolean if a field has been set.
+
 ### GetLines
 
 `func (o *Element) GetLines() int64`
@@ -402,6 +455,31 @@ SetMaxWidth sets MaxWidth field to given value.
 `func (o *Element) HasMaxWidth() bool`
 
 HasMaxWidth returns a boolean if a field has been set.
+
+### GetMode
+
+`func (o *Element) GetMode() string`
+
+GetMode returns the Mode field if non-nil, zero value otherwise.
+
+### GetModeOk
+
+`func (o *Element) GetModeOk() (*string, bool)`
+
+GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMode
+
+`func (o *Element) SetMode(v string)`
+
+SetMode sets Mode field to given value.
+
+### HasMode
+
+`func (o *Element) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
 
 ### GetModuleSize
 

@@ -23,6 +23,8 @@ var _ MappedNullable = &Element{}
 type Element struct {
 	// Alignment when wrapping
 	Align *string `json:"align,omitempty"`
+	// Which corner x,y names. topLeft (^FO, default); bottomLeft (^FT: the text baseline, what most designer-exported ZPL uses); the Right variants make x the field's right edge (ZPL justification 1)
+	Anchor *string `json:"anchor,omitempty"`
 	// Grid columns (default 1)
 	Columns *int64 `json:"columns,omitempty"`
 	// Box corner rounding 0-8
@@ -43,12 +45,16 @@ type Element struct {
 	Height *int64 `json:"height,omitempty"`
 	// Line length in dots
 	Length *int64 `json:"length,omitempty"`
+	// Extra dots between wrapped lines
+	LineSpacing *int64 `json:"lineSpacing,omitempty"`
 	// Max lines when wrapping (default 1)
 	Lines *int64 `json:"lines,omitempty"`
 	// QR module magnification (default 3)
 	Magnification *int64 `json:"magnification,omitempty"`
 	// Wrap text into a block this many dots wide
 	MaxWidth *int64 `json:"maxWidth,omitempty"`
+	// Code 128 mode: N none (default), U UCC case, A automatic subset switching, D UCC/EAN application identifiers
+	Mode *string `json:"mode,omitempty"`
 	// DataMatrix module size in dots (default 4)
 	ModuleSize *int64 `json:"moduleSize,omitempty"`
 	// Narrow element width in dots (1D; default 3)
@@ -130,6 +136,38 @@ func (o *Element) HasAlign() bool {
 // SetAlign gets a reference to the given string and assigns it to the Align field.
 func (o *Element) SetAlign(v string) {
 	o.Align = &v
+}
+
+// GetAnchor returns the Anchor field value if set, zero value otherwise.
+func (o *Element) GetAnchor() string {
+	if o == nil || IsNil(o.Anchor) {
+		var ret string
+		return ret
+	}
+	return *o.Anchor
+}
+
+// GetAnchorOk returns a tuple with the Anchor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Element) GetAnchorOk() (*string, bool) {
+	if o == nil || IsNil(o.Anchor) {
+		return nil, false
+	}
+	return o.Anchor, true
+}
+
+// HasAnchor returns a boolean if a field has been set.
+func (o *Element) HasAnchor() bool {
+	if o != nil && !IsNil(o.Anchor) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnchor gets a reference to the given string and assigns it to the Anchor field.
+func (o *Element) SetAnchor(v string) {
+	o.Anchor = &v
 }
 
 // GetColumns returns the Columns field value if set, zero value otherwise.
@@ -452,6 +490,38 @@ func (o *Element) SetLength(v int64) {
 	o.Length = &v
 }
 
+// GetLineSpacing returns the LineSpacing field value if set, zero value otherwise.
+func (o *Element) GetLineSpacing() int64 {
+	if o == nil || IsNil(o.LineSpacing) {
+		var ret int64
+		return ret
+	}
+	return *o.LineSpacing
+}
+
+// GetLineSpacingOk returns a tuple with the LineSpacing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Element) GetLineSpacingOk() (*int64, bool) {
+	if o == nil || IsNil(o.LineSpacing) {
+		return nil, false
+	}
+	return o.LineSpacing, true
+}
+
+// HasLineSpacing returns a boolean if a field has been set.
+func (o *Element) HasLineSpacing() bool {
+	if o != nil && !IsNil(o.LineSpacing) {
+		return true
+	}
+
+	return false
+}
+
+// SetLineSpacing gets a reference to the given int64 and assigns it to the LineSpacing field.
+func (o *Element) SetLineSpacing(v int64) {
+	o.LineSpacing = &v
+}
+
 // GetLines returns the Lines field value if set, zero value otherwise.
 func (o *Element) GetLines() int64 {
 	if o == nil || IsNil(o.Lines) {
@@ -546,6 +616,38 @@ func (o *Element) HasMaxWidth() bool {
 // SetMaxWidth gets a reference to the given int64 and assigns it to the MaxWidth field.
 func (o *Element) SetMaxWidth(v int64) {
 	o.MaxWidth = &v
+}
+
+// GetMode returns the Mode field value if set, zero value otherwise.
+func (o *Element) GetMode() string {
+	if o == nil || IsNil(o.Mode) {
+		var ret string
+		return ret
+	}
+	return *o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Element) GetModeOk() (*string, bool) {
+	if o == nil || IsNil(o.Mode) {
+		return nil, false
+	}
+	return o.Mode, true
+}
+
+// HasMode returns a boolean if a field has been set.
+func (o *Element) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
+func (o *Element) SetMode(v string) {
+	o.Mode = &v
 }
 
 // GetModuleSize returns the ModuleSize field value if set, zero value otherwise.
@@ -1033,6 +1135,9 @@ func (o Element) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Align) {
 		toSerialize["align"] = o.Align
 	}
+	if !IsNil(o.Anchor) {
+		toSerialize["anchor"] = o.Anchor
+	}
 	if !IsNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
@@ -1063,6 +1168,9 @@ func (o Element) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Length) {
 		toSerialize["length"] = o.Length
 	}
+	if !IsNil(o.LineSpacing) {
+		toSerialize["lineSpacing"] = o.LineSpacing
+	}
 	if !IsNil(o.Lines) {
 		toSerialize["lines"] = o.Lines
 	}
@@ -1071,6 +1179,9 @@ func (o Element) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxWidth) {
 		toSerialize["maxWidth"] = o.MaxWidth
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
 	}
 	if !IsNil(o.ModuleSize) {
 		toSerialize["moduleSize"] = o.ModuleSize
