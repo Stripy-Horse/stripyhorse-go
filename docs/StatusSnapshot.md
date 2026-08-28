@@ -4,17 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Darkness** | **string** | print.tone setting, e.g. 20.0 | 
 **Faults** | [**Faults**](Faults.md) |  | 
 **FormatsInBuffer** | **int64** |  | 
+**FriendlyName** | **string** | device.friendly_name override; empty means unset | 
 **LabelLengthDots** | **int64** |  | 
 **Odometer** | **int64** |  | 
+**SpeedIps** | **string** | media.speed setting, inches/second | 
 **WidthDots** | **int64** |  | 
 
 ## Methods
 
 ### NewStatusSnapshot
 
-`func NewStatusSnapshot(faults Faults, formatsInBuffer int64, labelLengthDots int64, odometer int64, widthDots int64, ) *StatusSnapshot`
+`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, widthDots int64, ) *StatusSnapshot`
 
 NewStatusSnapshot instantiates a new StatusSnapshot object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +31,26 @@ will change when the set of required properties is changed
 NewStatusSnapshotWithDefaults instantiates a new StatusSnapshot object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDarkness
+
+`func (o *StatusSnapshot) GetDarkness() string`
+
+GetDarkness returns the Darkness field if non-nil, zero value otherwise.
+
+### GetDarknessOk
+
+`func (o *StatusSnapshot) GetDarknessOk() (*string, bool)`
+
+GetDarknessOk returns a tuple with the Darkness field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDarkness
+
+`func (o *StatusSnapshot) SetDarkness(v string)`
+
+SetDarkness sets Darkness field to given value.
+
 
 ### GetFaults
 
@@ -69,6 +92,26 @@ and a boolean to check if the value has been set.
 SetFormatsInBuffer sets FormatsInBuffer field to given value.
 
 
+### GetFriendlyName
+
+`func (o *StatusSnapshot) GetFriendlyName() string`
+
+GetFriendlyName returns the FriendlyName field if non-nil, zero value otherwise.
+
+### GetFriendlyNameOk
+
+`func (o *StatusSnapshot) GetFriendlyNameOk() (*string, bool)`
+
+GetFriendlyNameOk returns a tuple with the FriendlyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFriendlyName
+
+`func (o *StatusSnapshot) SetFriendlyName(v string)`
+
+SetFriendlyName sets FriendlyName field to given value.
+
+
 ### GetLabelLengthDots
 
 `func (o *StatusSnapshot) GetLabelLengthDots() int64`
@@ -107,6 +150,26 @@ and a boolean to check if the value has been set.
 `func (o *StatusSnapshot) SetOdometer(v int64)`
 
 SetOdometer sets Odometer field to given value.
+
+
+### GetSpeedIps
+
+`func (o *StatusSnapshot) GetSpeedIps() string`
+
+GetSpeedIps returns the SpeedIps field if non-nil, zero value otherwise.
+
+### GetSpeedIpsOk
+
+`func (o *StatusSnapshot) GetSpeedIpsOk() (*string, bool)`
+
+GetSpeedIpsOk returns a tuple with the SpeedIps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpeedIps
+
+`func (o *StatusSnapshot) SetSpeedIps(v string)`
+
+SetSpeedIps sets SpeedIps field to given value.
 
 
 ### GetWidthDots

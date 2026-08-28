@@ -21,10 +21,16 @@ var _ MappedNullable = &StatusSnapshot{}
 
 // StatusSnapshot struct for StatusSnapshot
 type StatusSnapshot struct {
+	// print.tone setting, e.g. 20.0
+	Darkness string `json:"darkness"`
 	Faults Faults `json:"faults"`
 	FormatsInBuffer int64 `json:"formatsInBuffer"`
+	// device.friendly_name override; empty means unset
+	FriendlyName string `json:"friendlyName"`
 	LabelLengthDots int64 `json:"labelLengthDots"`
 	Odometer int64 `json:"odometer"`
+	// media.speed setting, inches/second
+	SpeedIps string `json:"speedIps"`
 	WidthDots int64 `json:"widthDots"`
 }
 
@@ -34,12 +40,15 @@ type _StatusSnapshot StatusSnapshot
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatusSnapshot(faults Faults, formatsInBuffer int64, labelLengthDots int64, odometer int64, widthDots int64) *StatusSnapshot {
+func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, widthDots int64) *StatusSnapshot {
 	this := StatusSnapshot{}
+	this.Darkness = darkness
 	this.Faults = faults
 	this.FormatsInBuffer = formatsInBuffer
+	this.FriendlyName = friendlyName
 	this.LabelLengthDots = labelLengthDots
 	this.Odometer = odometer
+	this.SpeedIps = speedIps
 	this.WidthDots = widthDots
 	return &this
 }
@@ -50,6 +59,30 @@ func NewStatusSnapshot(faults Faults, formatsInBuffer int64, labelLengthDots int
 func NewStatusSnapshotWithDefaults() *StatusSnapshot {
 	this := StatusSnapshot{}
 	return &this
+}
+
+// GetDarkness returns the Darkness field value
+func (o *StatusSnapshot) GetDarkness() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Darkness
+}
+
+// GetDarknessOk returns a tuple with the Darkness field value
+// and a boolean to check if the value has been set.
+func (o *StatusSnapshot) GetDarknessOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Darkness, true
+}
+
+// SetDarkness sets field value
+func (o *StatusSnapshot) SetDarkness(v string) {
+	o.Darkness = v
 }
 
 // GetFaults returns the Faults field value
@@ -100,6 +133,30 @@ func (o *StatusSnapshot) SetFormatsInBuffer(v int64) {
 	o.FormatsInBuffer = v
 }
 
+// GetFriendlyName returns the FriendlyName field value
+func (o *StatusSnapshot) GetFriendlyName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.FriendlyName
+}
+
+// GetFriendlyNameOk returns a tuple with the FriendlyName field value
+// and a boolean to check if the value has been set.
+func (o *StatusSnapshot) GetFriendlyNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FriendlyName, true
+}
+
+// SetFriendlyName sets field value
+func (o *StatusSnapshot) SetFriendlyName(v string) {
+	o.FriendlyName = v
+}
+
 // GetLabelLengthDots returns the LabelLengthDots field value
 func (o *StatusSnapshot) GetLabelLengthDots() int64 {
 	if o == nil {
@@ -148,6 +205,30 @@ func (o *StatusSnapshot) SetOdometer(v int64) {
 	o.Odometer = v
 }
 
+// GetSpeedIps returns the SpeedIps field value
+func (o *StatusSnapshot) GetSpeedIps() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SpeedIps
+}
+
+// GetSpeedIpsOk returns a tuple with the SpeedIps field value
+// and a boolean to check if the value has been set.
+func (o *StatusSnapshot) GetSpeedIpsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SpeedIps, true
+}
+
+// SetSpeedIps sets field value
+func (o *StatusSnapshot) SetSpeedIps(v string) {
+	o.SpeedIps = v
+}
+
 // GetWidthDots returns the WidthDots field value
 func (o *StatusSnapshot) GetWidthDots() int64 {
 	if o == nil {
@@ -182,10 +263,13 @@ func (o StatusSnapshot) MarshalJSON() ([]byte, error) {
 
 func (o StatusSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["darkness"] = o.Darkness
 	toSerialize["faults"] = o.Faults
 	toSerialize["formatsInBuffer"] = o.FormatsInBuffer
+	toSerialize["friendlyName"] = o.FriendlyName
 	toSerialize["labelLengthDots"] = o.LabelLengthDots
 	toSerialize["odometer"] = o.Odometer
+	toSerialize["speedIps"] = o.SpeedIps
 	toSerialize["widthDots"] = o.WidthDots
 	return toSerialize, nil
 }
@@ -195,10 +279,13 @@ func (o *StatusSnapshot) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"darkness",
 		"faults",
 		"formatsInBuffer",
+		"friendlyName",
 		"labelLengthDots",
 		"odometer",
+		"speedIps",
 		"widthDots",
 	}
 
