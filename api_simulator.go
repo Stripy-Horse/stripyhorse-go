@@ -923,6 +923,8 @@ func (r ApiListPrintersRequest) Execute() (*ListPrintersOutputBody, *http.Respon
 /*
 ListPrinters List your printers
 
+Every printer on your account, whichever of its keys created them.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListPrintersRequest
 */

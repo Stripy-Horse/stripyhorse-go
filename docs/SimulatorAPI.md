@@ -509,6 +509,8 @@ Name | Type | Description  | Notes
 
 List your printers
 
+
+
 ### Example
 
 ```go

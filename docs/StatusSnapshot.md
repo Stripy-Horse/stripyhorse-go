@@ -11,13 +11,14 @@ Name | Type | Description | Notes
 **LabelLengthDots** | **int64** |  | 
 **Odometer** | **int64** |  | 
 **SpeedIps** | **string** | media.speed setting, inches/second | 
+**TearOff** | **string** | ezpl.tear_off setting, dots | 
 **WidthDots** | **int64** |  | 
 
 ## Methods
 
 ### NewStatusSnapshot
 
-`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, widthDots int64, ) *StatusSnapshot`
+`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, tearOff string, widthDots int64, ) *StatusSnapshot`
 
 NewStatusSnapshot instantiates a new StatusSnapshot object
 This constructor will assign default values to properties that have it defined,
@@ -170,6 +171,26 @@ and a boolean to check if the value has been set.
 `func (o *StatusSnapshot) SetSpeedIps(v string)`
 
 SetSpeedIps sets SpeedIps field to given value.
+
+
+### GetTearOff
+
+`func (o *StatusSnapshot) GetTearOff() string`
+
+GetTearOff returns the TearOff field if non-nil, zero value otherwise.
+
+### GetTearOffOk
+
+`func (o *StatusSnapshot) GetTearOffOk() (*string, bool)`
+
+GetTearOffOk returns a tuple with the TearOff field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTearOff
+
+`func (o *StatusSnapshot) SetTearOff(v string)`
+
+SetTearOff sets TearOff field to given value.
 
 
 ### GetWidthDots

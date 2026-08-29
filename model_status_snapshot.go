@@ -31,6 +31,8 @@ type StatusSnapshot struct {
 	Odometer int64 `json:"odometer"`
 	// media.speed setting, inches/second
 	SpeedIps string `json:"speedIps"`
+	// ezpl.tear_off setting, dots
+	TearOff string `json:"tearOff"`
 	WidthDots int64 `json:"widthDots"`
 }
 
@@ -40,7 +42,7 @@ type _StatusSnapshot StatusSnapshot
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, widthDots int64) *StatusSnapshot {
+func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, tearOff string, widthDots int64) *StatusSnapshot {
 	this := StatusSnapshot{}
 	this.Darkness = darkness
 	this.Faults = faults
@@ -49,6 +51,7 @@ func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, fr
 	this.LabelLengthDots = labelLengthDots
 	this.Odometer = odometer
 	this.SpeedIps = speedIps
+	this.TearOff = tearOff
 	this.WidthDots = widthDots
 	return &this
 }
@@ -229,6 +232,30 @@ func (o *StatusSnapshot) SetSpeedIps(v string) {
 	o.SpeedIps = v
 }
 
+// GetTearOff returns the TearOff field value
+func (o *StatusSnapshot) GetTearOff() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.TearOff
+}
+
+// GetTearOffOk returns a tuple with the TearOff field value
+// and a boolean to check if the value has been set.
+func (o *StatusSnapshot) GetTearOffOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TearOff, true
+}
+
+// SetTearOff sets field value
+func (o *StatusSnapshot) SetTearOff(v string) {
+	o.TearOff = v
+}
+
 // GetWidthDots returns the WidthDots field value
 func (o *StatusSnapshot) GetWidthDots() int64 {
 	if o == nil {
@@ -270,6 +297,7 @@ func (o StatusSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize["labelLengthDots"] = o.LabelLengthDots
 	toSerialize["odometer"] = o.Odometer
 	toSerialize["speedIps"] = o.SpeedIps
+	toSerialize["tearOff"] = o.TearOff
 	toSerialize["widthDots"] = o.WidthDots
 	return toSerialize, nil
 }
@@ -286,6 +314,7 @@ func (o *StatusSnapshot) UnmarshalJSON(data []byte) (err error) {
 		"labelLengthDots",
 		"odometer",
 		"speedIps",
+		"tearOff",
 		"widthDots",
 	}
 
