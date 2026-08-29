@@ -47,6 +47,20 @@ func Test_stripyhorse_SimulatorAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SimulatorAPIService DeleteJob", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var printerId string
+		var jobId int64
+
+		httpRes, err := apiClient.SimulatorAPI.DeleteJob(context.Background(), printerId, jobId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SimulatorAPIService DeletePrinter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *RenderAPI* | [**RenderZplPng**](docs/RenderAPI.md#renderzplpng) | **Post** /v1/render.png | Render ZPL and return the first label as a raw PNG
 *SimulatorAPI* | [**ClearJobs**](docs/SimulatorAPI.md#clearjobs) | **Delete** /v1/printers/{printerId}/jobs | Delete all captured jobs
 *SimulatorAPI* | [**CreatePrinter**](docs/SimulatorAPI.md#createprinter) | **Post** /v1/printers | Create a virtual printer
+*SimulatorAPI* | [**DeleteJob**](docs/SimulatorAPI.md#deletejob) | **Delete** /v1/printers/{printerId}/jobs/{jobId} | Delete one captured job
 *SimulatorAPI* | [**DeletePrinter**](docs/SimulatorAPI.md#deleteprinter) | **Delete** /v1/printers/{printerId} | Delete a printer and its captured jobs
 *SimulatorAPI* | [**GetJob**](docs/SimulatorAPI.md#getjob) | **Get** /v1/printers/{printerId}/jobs/{jobId} | Get one job including its raw ZPL
 *SimulatorAPI* | [**GetJobLabel**](docs/SimulatorAPI.md#getjoblabel) | **Get** /v1/printers/{printerId}/jobs/{jobId}/labels/{index}.png | Get one rendered label as a PNG

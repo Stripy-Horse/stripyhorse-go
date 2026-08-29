@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ClearJobs**](SimulatorAPI.md#ClearJobs) | **Delete** /v1/printers/{printerId}/jobs | Delete all captured jobs
 [**CreatePrinter**](SimulatorAPI.md#CreatePrinter) | **Post** /v1/printers | Create a virtual printer
+[**DeleteJob**](SimulatorAPI.md#DeleteJob) | **Delete** /v1/printers/{printerId}/jobs/{jobId} | Delete one captured job
 [**DeletePrinter**](SimulatorAPI.md#DeletePrinter) | **Delete** /v1/printers/{printerId} | Delete a printer and its captured jobs
 [**GetJob**](SimulatorAPI.md#GetJob) | **Get** /v1/printers/{printerId}/jobs/{jobId} | Get one job including its raw ZPL
 [**GetJobLabel**](SimulatorAPI.md#GetJobLabel) | **Get** /v1/printers/{printerId}/jobs/{jobId}/labels/{index}.png | Get one rendered label as a PNG
@@ -144,6 +145,75 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteJob
+
+> DeleteJob(ctx, printerId, jobId).Execute()
+
+Delete one captured job
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Stripy-Horse/stripyhorse-go"
+)
+
+func main() {
+	printerId := "printerId_example" // string | 
+	jobId := int64(789) // int64 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SimulatorAPI.DeleteJob(context.Background(), printerId, jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SimulatorAPI.DeleteJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**printerId** | **string** |  | 
+**jobId** | **int64** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
