@@ -29,6 +29,7 @@ type StatusSnapshot struct {
 	FriendlyName string `json:"friendlyName"`
 	LabelLengthDots int64 `json:"labelLengthDots"`
 	Odometer int64 `json:"odometer"`
+	Queue []HeldJob `json:"queue"`
 	// media.speed setting, inches/second
 	SpeedIps string `json:"speedIps"`
 	// ezpl.tear_off setting, dots
@@ -42,7 +43,7 @@ type _StatusSnapshot StatusSnapshot
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, tearOff string, widthDots int64) *StatusSnapshot {
+func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, tearOff string, widthDots int64) *StatusSnapshot {
 	this := StatusSnapshot{}
 	this.Darkness = darkness
 	this.Faults = faults
@@ -50,6 +51,7 @@ func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, fr
 	this.FriendlyName = friendlyName
 	this.LabelLengthDots = labelLengthDots
 	this.Odometer = odometer
+	this.Queue = queue
 	this.SpeedIps = speedIps
 	this.TearOff = tearOff
 	this.WidthDots = widthDots
@@ -208,6 +210,32 @@ func (o *StatusSnapshot) SetOdometer(v int64) {
 	o.Odometer = v
 }
 
+// GetQueue returns the Queue field value
+// If the value is explicit nil, the zero value for []HeldJob will be returned
+func (o *StatusSnapshot) GetQueue() []HeldJob {
+	if o == nil {
+		var ret []HeldJob
+		return ret
+	}
+
+	return o.Queue
+}
+
+// GetQueueOk returns a tuple with the Queue field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StatusSnapshot) GetQueueOk() ([]HeldJob, bool) {
+	if o == nil || IsNil(o.Queue) {
+		return nil, false
+	}
+	return o.Queue, true
+}
+
+// SetQueue sets field value
+func (o *StatusSnapshot) SetQueue(v []HeldJob) {
+	o.Queue = v
+}
+
 // GetSpeedIps returns the SpeedIps field value
 func (o *StatusSnapshot) GetSpeedIps() string {
 	if o == nil {
@@ -296,6 +324,9 @@ func (o StatusSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize["friendlyName"] = o.FriendlyName
 	toSerialize["labelLengthDots"] = o.LabelLengthDots
 	toSerialize["odometer"] = o.Odometer
+	if o.Queue != nil {
+		toSerialize["queue"] = o.Queue
+	}
 	toSerialize["speedIps"] = o.SpeedIps
 	toSerialize["tearOff"] = o.TearOff
 	toSerialize["widthDots"] = o.WidthDots
@@ -313,6 +344,7 @@ func (o *StatusSnapshot) UnmarshalJSON(data []byte) (err error) {
 		"friendlyName",
 		"labelLengthDots",
 		"odometer",
+		"queue",
 		"speedIps",
 		"tearOff",
 		"widthDots",

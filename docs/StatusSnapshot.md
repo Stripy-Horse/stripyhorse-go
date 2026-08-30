@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FriendlyName** | **string** | device.friendly_name override; empty means unset | 
 **LabelLengthDots** | **int64** |  | 
 **Odometer** | **int64** |  | 
+**Queue** | [**[]HeldJob**](HeldJob.md) |  | 
 **SpeedIps** | **string** | media.speed setting, inches/second | 
 **TearOff** | **string** | ezpl.tear_off setting, dots | 
 **WidthDots** | **int64** |  | 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewStatusSnapshot
 
-`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, speedIps string, tearOff string, widthDots int64, ) *StatusSnapshot`
+`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, tearOff string, widthDots int64, ) *StatusSnapshot`
 
 NewStatusSnapshot instantiates a new StatusSnapshot object
 This constructor will assign default values to properties that have it defined,
@@ -153,6 +154,36 @@ and a boolean to check if the value has been set.
 SetOdometer sets Odometer field to given value.
 
 
+### GetQueue
+
+`func (o *StatusSnapshot) GetQueue() []HeldJob`
+
+GetQueue returns the Queue field if non-nil, zero value otherwise.
+
+### GetQueueOk
+
+`func (o *StatusSnapshot) GetQueueOk() (*[]HeldJob, bool)`
+
+GetQueueOk returns a tuple with the Queue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueue
+
+`func (o *StatusSnapshot) SetQueue(v []HeldJob)`
+
+SetQueue sets Queue field to given value.
+
+
+### SetQueueNil
+
+`func (o *StatusSnapshot) SetQueueNil(b bool)`
+
+ SetQueueNil sets the value for Queue to be an explicit nil
+
+### UnsetQueue
+`func (o *StatusSnapshot) UnsetQueue()`
+
+UnsetQueue ensures that no value is present for Queue, not even an explicit nil
 ### GetSpeedIps
 
 `func (o *StatusSnapshot) GetSpeedIps() string`

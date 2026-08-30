@@ -25,6 +25,7 @@ docs/ErrorDetail.md
 docs/ErrorModel.md
 docs/Faults.md
 docs/Finding.md
+docs/HeldJob.md
 docs/HostStatus.md
 docs/HostStatusInputBody.md
 docs/HostStatusOutputBody.md
@@ -73,6 +74,7 @@ model_error_detail.go
 model_error_model.go
 model_faults.go
 model_finding.go
+model_held_job.go
 model_host_status.go
 model_host_status_input_body.go
 model_host_status_output_body.go

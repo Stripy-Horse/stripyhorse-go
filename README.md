@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
  - [ErrorModel](docs/ErrorModel.md)
  - [Faults](docs/Faults.md)
  - [Finding](docs/Finding.md)
+ - [HeldJob](docs/HeldJob.md)
  - [HostStatus](docs/HostStatus.md)
  - [HostStatusInputBody](docs/HostStatusInputBody.md)
  - [HostStatusOutputBody](docs/HostStatusOutputBody.md)
