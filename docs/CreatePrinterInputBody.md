@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessMode** | Pointer to **string** | Who may print to the TCP port; default open. Use token from CI, where the source address is different every run. | [optional] 
 **Anonymize** | Pointer to **bool** | Mask PII and strip graphics from every captured frame | [optional] 
 **Dpmm** | Pointer to **int64** | Print density in dots/mm (152/203/300/600 dpi); default 8 | [optional] 
 **HeightMm** | Pointer to **float64** |  | [optional] 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewCreatePrinterInputBodyWithDefaults instantiates a new CreatePrinterInputBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessMode
+
+`func (o *CreatePrinterInputBody) GetAccessMode() string`
+
+GetAccessMode returns the AccessMode field if non-nil, zero value otherwise.
+
+### GetAccessModeOk
+
+`func (o *CreatePrinterInputBody) GetAccessModeOk() (*string, bool)`
+
+GetAccessModeOk returns a tuple with the AccessMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessMode
+
+`func (o *CreatePrinterInputBody) SetAccessMode(v string)`
+
+SetAccessMode sets AccessMode field to given value.
+
+### HasAccessMode
+
+`func (o *CreatePrinterInputBody) HasAccessMode() bool`
+
+HasAccessMode returns a boolean if a field has been set.
 
 ### GetAnonymize
 

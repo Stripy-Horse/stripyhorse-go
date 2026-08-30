@@ -19,6 +19,7 @@ var _ MappedNullable = &UpdatePrinterInputBody{}
 
 // UpdatePrinterInputBody struct for UpdatePrinterInputBody
 type UpdatePrinterInputBody struct {
+	AccessMode *string `json:"accessMode,omitempty"`
 	Anonymize *bool `json:"anonymize,omitempty"`
 	Name *string `json:"name,omitempty"`
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
@@ -39,6 +40,38 @@ func NewUpdatePrinterInputBody() *UpdatePrinterInputBody {
 func NewUpdatePrinterInputBodyWithDefaults() *UpdatePrinterInputBody {
 	this := UpdatePrinterInputBody{}
 	return &this
+}
+
+// GetAccessMode returns the AccessMode field value if set, zero value otherwise.
+func (o *UpdatePrinterInputBody) GetAccessMode() string {
+	if o == nil || IsNil(o.AccessMode) {
+		var ret string
+		return ret
+	}
+	return *o.AccessMode
+}
+
+// GetAccessModeOk returns a tuple with the AccessMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePrinterInputBody) GetAccessModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessMode) {
+		return nil, false
+	}
+	return o.AccessMode, true
+}
+
+// HasAccessMode returns a boolean if a field has been set.
+func (o *UpdatePrinterInputBody) HasAccessMode() bool {
+	if o != nil && !IsNil(o.AccessMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessMode gets a reference to the given string and assigns it to the AccessMode field.
+func (o *UpdatePrinterInputBody) SetAccessMode(v string) {
+	o.AccessMode = &v
 }
 
 // GetAnonymize returns the Anonymize field value if set, zero value otherwise.
@@ -147,6 +180,9 @@ func (o UpdatePrinterInputBody) MarshalJSON() ([]byte, error) {
 
 func (o UpdatePrinterInputBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessMode) {
+		toSerialize["accessMode"] = o.AccessMode
+	}
 	if !IsNil(o.Anonymize) {
 		toSerialize["anonymize"] = o.Anonymize
 	}

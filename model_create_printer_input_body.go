@@ -21,6 +21,8 @@ var _ MappedNullable = &CreatePrinterInputBody{}
 
 // CreatePrinterInputBody struct for CreatePrinterInputBody
 type CreatePrinterInputBody struct {
+	// Who may print to the TCP port; default open. Use token from CI, where the source address is different every run.
+	AccessMode *string `json:"accessMode,omitempty"`
 	// Mask PII and strip graphics from every captured frame
 	Anonymize *bool `json:"anonymize,omitempty"`
 	// Print density in dots/mm (152/203/300/600 dpi); default 8
@@ -52,6 +54,38 @@ func NewCreatePrinterInputBody(name string) *CreatePrinterInputBody {
 func NewCreatePrinterInputBodyWithDefaults() *CreatePrinterInputBody {
 	this := CreatePrinterInputBody{}
 	return &this
+}
+
+// GetAccessMode returns the AccessMode field value if set, zero value otherwise.
+func (o *CreatePrinterInputBody) GetAccessMode() string {
+	if o == nil || IsNil(o.AccessMode) {
+		var ret string
+		return ret
+	}
+	return *o.AccessMode
+}
+
+// GetAccessModeOk returns a tuple with the AccessMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePrinterInputBody) GetAccessModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessMode) {
+		return nil, false
+	}
+	return o.AccessMode, true
+}
+
+// HasAccessMode returns a boolean if a field has been set.
+func (o *CreatePrinterInputBody) HasAccessMode() bool {
+	if o != nil && !IsNil(o.AccessMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessMode gets a reference to the given string and assigns it to the AccessMode field.
+func (o *CreatePrinterInputBody) SetAccessMode(v string) {
+	o.AccessMode = &v
 }
 
 // GetAnonymize returns the Anonymize field value if set, zero value otherwise.
@@ -312,6 +346,9 @@ func (o CreatePrinterInputBody) MarshalJSON() ([]byte, error) {
 
 func (o CreatePrinterInputBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessMode) {
+		toSerialize["accessMode"] = o.AccessMode
+	}
 	if !IsNil(o.Anonymize) {
 		toSerialize["anonymize"] = o.Anonymize
 	}

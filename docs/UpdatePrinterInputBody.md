@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessMode** | Pointer to **string** |  | [optional] 
 **Anonymize** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewUpdatePrinterInputBodyWithDefaults instantiates a new UpdatePrinterInputBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessMode
+
+`func (o *UpdatePrinterInputBody) GetAccessMode() string`
+
+GetAccessMode returns the AccessMode field if non-nil, zero value otherwise.
+
+### GetAccessModeOk
+
+`func (o *UpdatePrinterInputBody) GetAccessModeOk() (*string, bool)`
+
+GetAccessModeOk returns a tuple with the AccessMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessMode
+
+`func (o *UpdatePrinterInputBody) SetAccessMode(v string)`
+
+SetAccessMode sets AccessMode field to given value.
+
+### HasAccessMode
+
+`func (o *UpdatePrinterInputBody) HasAccessMode() bool`
+
+HasAccessMode returns a boolean if a field has been set.
 
 ### GetAnonymize
 

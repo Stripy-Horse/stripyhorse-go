@@ -153,7 +153,7 @@ func (r ApiCreatePrinterRequest) Execute() (*PrinterBody, *http.Response, error)
 /*
 CreatePrinter Create a virtual printer
 
-Free tier: one ephemeral printer (24h idle TTL). Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
+Free tier: one ephemeral printer, expiring after 4h with no jobs. Paid tiers: persistent printers. The ingest URL and webhook secret are only returned here.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePrinterRequest

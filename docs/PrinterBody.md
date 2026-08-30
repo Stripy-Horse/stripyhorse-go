@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessMode** | **string** | Who may print to the TCP port: open (anyone), token (the stream must open with ~SH plus the ingest token), ip (only addresses the org has claimed) | 
 **Anonymize** | **bool** | When true, PII is masked and graphics stripped from every captured frame | 
 **CreatedAt** | **time.Time** |  | 
 **Dpmm** | **int64** |  | 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewPrinterBody
 
-`func NewPrinterBody(anonymize bool, createdAt time.Time, dpmm int64, heightMm float64, id string, mode string, name string, tcp PrinterBodyTCPStruct, widthMm float64, ) *PrinterBody`
+`func NewPrinterBody(accessMode string, anonymize bool, createdAt time.Time, dpmm int64, heightMm float64, id string, mode string, name string, tcp PrinterBodyTCPStruct, widthMm float64, ) *PrinterBody`
 
 NewPrinterBody instantiates a new PrinterBody object
 This constructor will assign default values to properties that have it defined,
@@ -37,6 +38,26 @@ will change when the set of required properties is changed
 NewPrinterBodyWithDefaults instantiates a new PrinterBody object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessMode
+
+`func (o *PrinterBody) GetAccessMode() string`
+
+GetAccessMode returns the AccessMode field if non-nil, zero value otherwise.
+
+### GetAccessModeOk
+
+`func (o *PrinterBody) GetAccessModeOk() (*string, bool)`
+
+GetAccessModeOk returns a tuple with the AccessMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessMode
+
+`func (o *PrinterBody) SetAccessMode(v string)`
+
+SetAccessMode sets AccessMode field to given value.
+
 
 ### GetAnonymize
 

@@ -22,6 +22,8 @@ var _ MappedNullable = &PrinterBody{}
 
 // PrinterBody struct for PrinterBody
 type PrinterBody struct {
+	// Who may print to the TCP port: open (anyone), token (the stream must open with ~SH plus the ingest token), ip (only addresses the org has claimed)
+	AccessMode string `json:"accessMode"`
 	// When true, PII is masked and graphics stripped from every captured frame
 	Anonymize bool `json:"anonymize"`
 	CreatedAt time.Time `json:"createdAt"`
@@ -47,8 +49,9 @@ type _PrinterBody PrinterBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrinterBody(anonymize bool, createdAt time.Time, dpmm int64, heightMm float64, id string, mode string, name string, tcp PrinterBodyTCPStruct, widthMm float64) *PrinterBody {
+func NewPrinterBody(accessMode string, anonymize bool, createdAt time.Time, dpmm int64, heightMm float64, id string, mode string, name string, tcp PrinterBodyTCPStruct, widthMm float64) *PrinterBody {
 	this := PrinterBody{}
+	this.AccessMode = accessMode
 	this.Anonymize = anonymize
 	this.CreatedAt = createdAt
 	this.Dpmm = dpmm
@@ -67,6 +70,30 @@ func NewPrinterBody(anonymize bool, createdAt time.Time, dpmm int64, heightMm fl
 func NewPrinterBodyWithDefaults() *PrinterBody {
 	this := PrinterBody{}
 	return &this
+}
+
+// GetAccessMode returns the AccessMode field value
+func (o *PrinterBody) GetAccessMode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccessMode
+}
+
+// GetAccessModeOk returns a tuple with the AccessMode field value
+// and a boolean to check if the value has been set.
+func (o *PrinterBody) GetAccessModeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccessMode, true
+}
+
+// SetAccessMode sets field value
+func (o *PrinterBody) SetAccessMode(v string) {
+	o.AccessMode = v
 }
 
 // GetAnonymize returns the Anonymize field value
@@ -455,6 +482,7 @@ func (o PrinterBody) MarshalJSON() ([]byte, error) {
 
 func (o PrinterBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["accessMode"] = o.AccessMode
 	toSerialize["anonymize"] = o.Anonymize
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["dpmm"] = o.Dpmm
@@ -487,6 +515,7 @@ func (o *PrinterBody) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"accessMode",
 		"anonymize",
 		"createdAt",
 		"dpmm",
