@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *SimulatorAPI* | [**GetPrinter**](docs/SimulatorAPI.md#getprinter) | **Get** /v1/printers/{printerId} | Get a printer with live state
 *SimulatorAPI* | [**ListJobs**](docs/SimulatorAPI.md#listjobs) | **Get** /v1/printers/{printerId}/jobs | List captured jobs, newest first
 *SimulatorAPI* | [**ListPrinters**](docs/SimulatorAPI.md#listprinters) | **Get** /v1/printers | List your printers
+*SimulatorAPI* | [**LoadPrinterMedia**](docs/SimulatorAPI.md#loadprintermedia) | **Post** /v1/printers/{printerId}/media | Fit a fresh roll and ribbon
 *SimulatorAPI* | [**ResetPrinter**](docs/SimulatorAPI.md#resetprinter) | **Post** /v1/printers/{printerId}/reset | Clear all faults and flush held jobs
 *SimulatorAPI* | [**SetPrinterFaults**](docs/SimulatorAPI.md#setprinterfaults) | **Post** /v1/printers/{printerId}/faults | Inject or clear fault conditions
 *SimulatorAPI* | [**UpdatePrinter**](docs/SimulatorAPI.md#updateprinter) | **Patch** /v1/printers/{printerId} | Rename a printer or set its webhook URL
@@ -122,6 +123,7 @@ Class | Method | HTTP request | Description
  - [JobSummary](docs/JobSummary.md)
  - [ListJobsOutputBody](docs/ListJobsOutputBody.md)
  - [ListPrintersOutputBody](docs/ListPrintersOutputBody.md)
+ - [MediaInputBody](docs/MediaInputBody.md)
  - [PreflightInputBody](docs/PreflightInputBody.md)
  - [PreflightOutputBody](docs/PreflightOutputBody.md)
  - [PrinterBody](docs/PrinterBody.md)
@@ -135,6 +137,7 @@ Class | Method | HTTP request | Description
  - [StateOutputBody](docs/StateOutputBody.md)
  - [StatusField](docs/StatusField.md)
  - [StatusSnapshot](docs/StatusSnapshot.md)
+ - [Supplies](docs/Supplies.md)
  - [UnicodeInputBody](docs/UnicodeInputBody.md)
  - [UnicodeOutputBody](docs/UnicodeOutputBody.md)
  - [UpdatePrinterInputBody](docs/UpdatePrinterInputBody.md)

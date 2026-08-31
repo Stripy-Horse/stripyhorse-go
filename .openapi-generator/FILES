@@ -35,6 +35,7 @@ docs/JobOutputBody.md
 docs/JobSummary.md
 docs/ListJobsOutputBody.md
 docs/ListPrintersOutputBody.md
+docs/MediaInputBody.md
 docs/PreflightInputBody.md
 docs/PreflightOutputBody.md
 docs/PrinterBody.md
@@ -51,6 +52,7 @@ docs/StampOutputBody.md
 docs/StateOutputBody.md
 docs/StatusField.md
 docs/StatusSnapshot.md
+docs/Supplies.md
 docs/UnicodeInputBody.md
 docs/UnicodeOutputBody.md
 docs/UpdatePrinterInputBody.md
@@ -84,6 +86,7 @@ model_job_output_body.go
 model_job_summary.go
 model_list_jobs_output_body.go
 model_list_printers_output_body.go
+model_media_input_body.go
 model_preflight_input_body.go
 model_preflight_output_body.go
 model_printer_body.go
@@ -97,6 +100,7 @@ model_stamp_output_body.go
 model_state_output_body.go
 model_status_field.go
 model_status_snapshot.go
+model_supplies.go
 model_unicode_input_body.go
 model_unicode_output_body.go
 model_update_printer_input_body.go

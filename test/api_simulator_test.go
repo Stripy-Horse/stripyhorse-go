@@ -145,6 +145,20 @@ func Test_stripyhorse_SimulatorAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SimulatorAPIService LoadPrinterMedia", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var printerId string
+
+		resp, httpRes, err := apiClient.SimulatorAPI.LoadPrinterMedia(context.Background(), printerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SimulatorAPIService ResetPrinter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Odometer** | **int64** |  | 
 **Queue** | [**[]HeldJob**](HeldJob.md) |  | 
 **SpeedIps** | **string** | media.speed setting, inches/second | 
+**Supplies** | [**Supplies**](Supplies.md) | What is left on the roll; zero loaded means endless | 
 **TearOff** | **string** | ezpl.tear_off setting, dots | 
 **WidthDots** | **int64** |  | 
 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewStatusSnapshot
 
-`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, tearOff string, widthDots int64, ) *StatusSnapshot`
+`func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, supplies Supplies, tearOff string, widthDots int64, ) *StatusSnapshot`
 
 NewStatusSnapshot instantiates a new StatusSnapshot object
 This constructor will assign default values to properties that have it defined,
@@ -202,6 +203,26 @@ and a boolean to check if the value has been set.
 `func (o *StatusSnapshot) SetSpeedIps(v string)`
 
 SetSpeedIps sets SpeedIps field to given value.
+
+
+### GetSupplies
+
+`func (o *StatusSnapshot) GetSupplies() Supplies`
+
+GetSupplies returns the Supplies field if non-nil, zero value otherwise.
+
+### GetSuppliesOk
+
+`func (o *StatusSnapshot) GetSuppliesOk() (*Supplies, bool)`
+
+GetSuppliesOk returns a tuple with the Supplies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupplies
+
+`func (o *StatusSnapshot) SetSupplies(v Supplies)`
+
+SetSupplies sets Supplies field to given value.
 
 
 ### GetTearOff

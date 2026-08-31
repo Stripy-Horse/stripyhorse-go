@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**GetPrinter**](SimulatorAPI.md#GetPrinter) | **Get** /v1/printers/{printerId} | Get a printer with live state
 [**ListJobs**](SimulatorAPI.md#ListJobs) | **Get** /v1/printers/{printerId}/jobs | List captured jobs, newest first
 [**ListPrinters**](SimulatorAPI.md#ListPrinters) | **Get** /v1/printers | List your printers
+[**LoadPrinterMedia**](SimulatorAPI.md#LoadPrinterMedia) | **Post** /v1/printers/{printerId}/media | Fit a fresh roll and ribbon
 [**ResetPrinter**](SimulatorAPI.md#ResetPrinter) | **Post** /v1/printers/{printerId}/reset | Clear all faults and flush held jobs
 [**SetPrinterFaults**](SimulatorAPI.md#SetPrinterFaults) | **Post** /v1/printers/{printerId}/faults | Inject or clear fault conditions
 [**UpdatePrinter**](SimulatorAPI.md#UpdatePrinter) | **Patch** /v1/printers/{printerId} | Rename a printer or set its webhook URL
@@ -627,6 +628,78 @@ Other parameters are passed through a pointer to a apiListPrintersRequest struct
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## LoadPrinterMedia
+
+> StateOutputBody LoadPrinterMedia(ctx, printerId).MediaInputBody(mediaInputBody).Execute()
+
+Fit a fresh roll and ribbon
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/Stripy-Horse/stripyhorse-go"
+)
+
+func main() {
+	printerId := "printerId_example" // string | 
+	mediaInputBody := *openapiclient.NewMediaInputBody() // MediaInputBody | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SimulatorAPI.LoadPrinterMedia(context.Background(), printerId).MediaInputBody(mediaInputBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SimulatorAPI.LoadPrinterMedia``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LoadPrinterMedia`: StateOutputBody
+	fmt.Fprintf(os.Stdout, "Response from `SimulatorAPI.LoadPrinterMedia`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**printerId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLoadPrinterMediaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **mediaInputBody** | [**MediaInputBody**](MediaInputBody.md) |  | 
+
+### Return type
+
+[**StateOutputBody**](StateOutputBody.md)
+
+### Authorization
+
+[headerKey](../README.md#headerKey), [bearerKey](../README.md#bearerKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

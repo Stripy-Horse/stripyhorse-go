@@ -32,6 +32,8 @@ type StatusSnapshot struct {
 	Queue []HeldJob `json:"queue"`
 	// media.speed setting, inches/second
 	SpeedIps string `json:"speedIps"`
+	// What is left on the roll; zero loaded means endless
+	Supplies Supplies `json:"supplies"`
 	// ezpl.tear_off setting, dots
 	TearOff string `json:"tearOff"`
 	WidthDots int64 `json:"widthDots"`
@@ -43,7 +45,7 @@ type _StatusSnapshot StatusSnapshot
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, tearOff string, widthDots int64) *StatusSnapshot {
+func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, friendlyName string, labelLengthDots int64, odometer int64, queue []HeldJob, speedIps string, supplies Supplies, tearOff string, widthDots int64) *StatusSnapshot {
 	this := StatusSnapshot{}
 	this.Darkness = darkness
 	this.Faults = faults
@@ -53,6 +55,7 @@ func NewStatusSnapshot(darkness string, faults Faults, formatsInBuffer int64, fr
 	this.Odometer = odometer
 	this.Queue = queue
 	this.SpeedIps = speedIps
+	this.Supplies = supplies
 	this.TearOff = tearOff
 	this.WidthDots = widthDots
 	return &this
@@ -260,6 +263,30 @@ func (o *StatusSnapshot) SetSpeedIps(v string) {
 	o.SpeedIps = v
 }
 
+// GetSupplies returns the Supplies field value
+func (o *StatusSnapshot) GetSupplies() Supplies {
+	if o == nil {
+		var ret Supplies
+		return ret
+	}
+
+	return o.Supplies
+}
+
+// GetSuppliesOk returns a tuple with the Supplies field value
+// and a boolean to check if the value has been set.
+func (o *StatusSnapshot) GetSuppliesOk() (*Supplies, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Supplies, true
+}
+
+// SetSupplies sets field value
+func (o *StatusSnapshot) SetSupplies(v Supplies) {
+	o.Supplies = v
+}
+
 // GetTearOff returns the TearOff field value
 func (o *StatusSnapshot) GetTearOff() string {
 	if o == nil {
@@ -328,6 +355,7 @@ func (o StatusSnapshot) ToMap() (map[string]interface{}, error) {
 		toSerialize["queue"] = o.Queue
 	}
 	toSerialize["speedIps"] = o.SpeedIps
+	toSerialize["supplies"] = o.Supplies
 	toSerialize["tearOff"] = o.TearOff
 	toSerialize["widthDots"] = o.WidthDots
 	return toSerialize, nil
@@ -346,6 +374,7 @@ func (o *StatusSnapshot) UnmarshalJSON(data []byte) (err error) {
 		"odometer",
 		"queue",
 		"speedIps",
+		"supplies",
 		"tearOff",
 		"widthDots",
 	}

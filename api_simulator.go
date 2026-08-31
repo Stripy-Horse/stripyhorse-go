@@ -1148,6 +1148,142 @@ func (a *SimulatorAPIService) ListPrintersExecute(r ApiListPrintersRequest) (*Li
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiLoadPrinterMediaRequest struct {
+	ctx context.Context
+	ApiService *SimulatorAPIService
+	printerId string
+	mediaInputBody *MediaInputBody
+}
+
+func (r ApiLoadPrinterMediaRequest) MediaInputBody(mediaInputBody MediaInputBody) ApiLoadPrinterMediaRequest {
+	r.mediaInputBody = &mediaInputBody
+	return r
+}
+
+func (r ApiLoadPrinterMediaRequest) Execute() (*StateOutputBody, *http.Response, error) {
+	return r.ApiService.LoadPrinterMediaExecute(r)
+}
+
+/*
+LoadPrinterMedia Fit a fresh roll and ribbon
+
+A loaded roll runs down as labels print and raises paper out when it is spent, which holds everything sent after it. Zero is an endless roll, which is the default and never runs out.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param printerId
+ @return ApiLoadPrinterMediaRequest
+*/
+func (a *SimulatorAPIService) LoadPrinterMedia(ctx context.Context, printerId string) ApiLoadPrinterMediaRequest {
+	return ApiLoadPrinterMediaRequest{
+		ApiService: a,
+		ctx: ctx,
+		printerId: printerId,
+	}
+}
+
+// Execute executes the request
+//  @return StateOutputBody
+func (a *SimulatorAPIService) LoadPrinterMediaExecute(r ApiLoadPrinterMediaRequest) (*StateOutputBody, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StateOutputBody
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SimulatorAPIService.LoadPrinterMedia")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/printers/{printerId}/media"
+	localVarPath = strings.Replace(localVarPath, "{"+"printerId"+"}", url.PathEscape(parameterValueToString(r.printerId, "printerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mediaInputBody == nil {
+		return localVarReturnValue, nil, reportError("mediaInputBody is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mediaInputBody
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["headerKey"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Api-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v ErrorModel
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiResetPrinterRequest struct {
 	ctx context.Context
 	ApiService *SimulatorAPIService
