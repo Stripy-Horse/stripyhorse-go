@@ -32,6 +32,8 @@ type CreatePrinterInputBody struct {
 	Name string `json:"name"`
 	// Named label size in inches; alternative to widthMm/heightMm
 	Preset *string `json:"preset,omitempty"`
+	// Put this printer on the shared router port instead of spending one of the plan's dedicated ports. It is then reached by naming it in the stream, a ZPL comment carrying the ingest token, which suits CI.
+	SharedPort *bool `json:"sharedPort,omitempty"`
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
 	WidthMm *float64 `json:"widthMm,omitempty"`
 }
@@ -272,6 +274,38 @@ func (o *CreatePrinterInputBody) SetPreset(v string) {
 	o.Preset = &v
 }
 
+// GetSharedPort returns the SharedPort field value if set, zero value otherwise.
+func (o *CreatePrinterInputBody) GetSharedPort() bool {
+	if o == nil || IsNil(o.SharedPort) {
+		var ret bool
+		return ret
+	}
+	return *o.SharedPort
+}
+
+// GetSharedPortOk returns a tuple with the SharedPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePrinterInputBody) GetSharedPortOk() (*bool, bool) {
+	if o == nil || IsNil(o.SharedPort) {
+		return nil, false
+	}
+	return o.SharedPort, true
+}
+
+// HasSharedPort returns a boolean if a field has been set.
+func (o *CreatePrinterInputBody) HasSharedPort() bool {
+	if o != nil && !IsNil(o.SharedPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedPort gets a reference to the given bool and assigns it to the SharedPort field.
+func (o *CreatePrinterInputBody) SetSharedPort(v bool) {
+	o.SharedPort = &v
+}
+
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
 func (o *CreatePrinterInputBody) GetWebhookUrl() string {
 	if o == nil || IsNil(o.WebhookUrl) {
@@ -364,6 +398,9 @@ func (o CreatePrinterInputBody) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Preset) {
 		toSerialize["preset"] = o.Preset
+	}
+	if !IsNil(o.SharedPort) {
+		toSerialize["sharedPort"] = o.SharedPort
 	}
 	if !IsNil(o.WebhookUrl) {
 		toSerialize["webhookUrl"] = o.WebhookUrl

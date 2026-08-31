@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Mode** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **Preset** | Pointer to **string** | Named label size in inches; alternative to widthMm/heightMm | [optional] 
+**SharedPort** | Pointer to **bool** | Put this printer on the shared router port instead of spending one of the plan&#39;s dedicated ports. It is then reached by naming it in the stream, a ZPL comment carrying the ingest token, which suits CI. | [optional] 
 **WebhookUrl** | Pointer to **string** |  | [optional] 
 **WidthMm** | Pointer to **float64** |  | [optional] 
 
@@ -202,6 +203,31 @@ SetPreset sets Preset field to given value.
 `func (o *CreatePrinterInputBody) HasPreset() bool`
 
 HasPreset returns a boolean if a field has been set.
+
+### GetSharedPort
+
+`func (o *CreatePrinterInputBody) GetSharedPort() bool`
+
+GetSharedPort returns the SharedPort field if non-nil, zero value otherwise.
+
+### GetSharedPortOk
+
+`func (o *CreatePrinterInputBody) GetSharedPortOk() (*bool, bool)`
+
+GetSharedPortOk returns a tuple with the SharedPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedPort
+
+`func (o *CreatePrinterInputBody) SetSharedPort(v bool)`
+
+SetSharedPort sets SharedPort field to given value.
+
+### HasSharedPort
+
+`func (o *CreatePrinterInputBody) HasSharedPort() bool`
+
+HasSharedPort returns a boolean if a field has been set.
 
 ### GetWebhookUrl
 
